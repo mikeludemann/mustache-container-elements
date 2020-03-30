@@ -1,0 +1,13 @@
+<div id="further_education">
+	<div class="headline">
+		Further Education
+	</div>
+	{{#users.further_education.education}}
+	<table>
+		<tr>
+			<td>{{from}} - {{until}}</td>
+			<td>{{company}}, {{place}}, {{subject}}</td>
+		</tr>
+	</table>
+	{{/users.further_education.education}}
+</div>

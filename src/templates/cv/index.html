@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Application letter</title>
+	<script src="./../libs/mustache.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script>
+		$(document).ready(function () {
+			var data = {
+				users: {
+					person: {
+						firstName: "Test",
+						lastName: "Tester",
+						street: "Test Way 1a",
+						postalcode: "10111",
+						place: "Berlin",
+						birthday: "01.01.1980",
+						placeOfBirth: "Berlin",
+						nationality: "German",
+						mail: "test.tester@test.com",
+						father: { name: "ABC Tester", age: "60", job: "Finance Manager" },
+						mother: { name: "DEF Tester", age: "58", job: "Sales Manager" },
+						siblings: [
+							{ name: "Text Tester", age: "28", gender: "male", job: "Musician" },
+							{ name: "Texter Tester", age: "31", gender: "female", job: "Project Manager" }
+						]
+					},
+					school: {
+						education: [
+							{ from: "08/1986", until: "07/1990", schools: "Berliner Grundschule", place: "Berlin", graduation: "" },
+							{ from: "08/1990", until: "07/1999", schools: "Berliner Gymnasium", place: "Berlin", graduation: "Abitur" }
+						]
+					},
+					training: {
+						job: [
+							{ from: "08/1999", until: "07/2002", company: "Berliner IT - GmbH", place: "Berlin", graduation: "Apprenticeship", subject: "Informatic" }
+						],
+						study: [
+							{ from: "08/2002", until: "02/2006", company: "Berliner Universität", place: "Berlin", graduation: "Bachelor of Science", subject: "Computer Science" }
+						]
+					},
+					work_experience: {
+						education: [
+							{ from: "07/2002", until: "07/2003", company: "Berliner IT - GmbH", place: "Berlin", subject: "Informatic" },
+							{ from: "08/2003", until: "today", company: "Berliner Airport IT", place: "Berlin", subject: "Informatic and Management" }
+						]
+					},
+					practical_experience: {
+						education: [
+							{ from: "02/1999", until: "07/1999", company: "Berliner IT - GmbH", place: "Berlin", subject: "Informatic" }
+						]
+					},
+					further_education: {
+						education: [
+							{ from: "02/2004", until: "09/2004", company: "International IT - e.V.", place: "Berlin", subject: "Management 4.0" }
+						]
+					},
+					social: {
+						facility: [
+							{ from: "02/2003", until: "today", company: "Green Living e.V.", place: "Berlin", subject: "Unsalaried" }
+						]
+					},
+					fullName: function () {
+						return this.users.person.firstName + " " + this.users.person.lastName;
+					},
+					fullDate: function () {
+						var date = new Date(),
+							day = date.getDate(),
+							month,
+							year = date.getFullYear();
+
+						if (date.getMonth() < 10) {
+
+							month = "0" + (date.getMonth() + 1);
+
+						} else {
+
+							month = date.getMonth() + 1;
+
+						}
+
+						return day + "." + month + "." + year;
+					}
+
+				}
+			};
+
+			$("#personal_data").load("personal.html", function () {
+				var personal = document.getElementById('personal_data').innerHTML;
+				var output = Mustache.render(personal, data);
+				$("#personal_data").html(output);
+			});
+
+			$("#school_data").load("school.html", function () {
+				var schools = document.getElementById('school_data').innerHTML;
+				var output = Mustache.render(schools, data);
+				$("#school_data").html(output);
+			});
+
+			$("#initial_continuing_education").load("training.html", function () {
+				var ice = document.getElementById('initial_continuing_education').innerHTML;
+				var output = Mustache.render(ice, data);
+				$("#initial_continuing_education").html(output);
+			});
+
+			$("#work_experience").load("work.html", function () {
+				var work = document.getElementById('work_experience').innerHTML;
+				var output = Mustache.render(work, data);
+				$("#work_experience").html(output);
+			});
+
+			$("#further_education").load("further.html", function () {
+				var further = document.getElementById('further_education').innerHTML;
+				var output = Mustache.render(further, data);
+				$("#further_education").html(output);
+			});
+
+			$("#practical_experience").load("practice.html", function () {
+				var practice = document.getElementById('practical_experience').innerHTML;
+				var output = Mustache.render(practice, data);
+				$("#practical_experience").html(output);
+			});
+
+			$("#social").load("social.html", function () {
+				var social = document.getElementById('social').innerHTML;
+				var output = Mustache.render(social, data);
+				$("#social").html(output);
+			});
+
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="personal_data"></div>
+	<div id="school_data"></div>
+	<div id="initial_continuing_education"></div>
+	<div id="work_experience"></div>
+	<div id="further_education"></div>
+	<div id="practical_experience"></div>
+	<div id="social"></div>
+</body>
+
+</html>

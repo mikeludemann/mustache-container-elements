@@ -1,0 +1,21 @@
+<div id="initial_continuing_education">
+	<div class="headline">
+		Training
+	</div>
+	{{#users.training.job}}
+	<table>
+		<tr>
+			<td>{{from}} - {{until}}</td>
+			<td>{{company}}, {{place}}, {{graduation}}, {{subject}}</td>
+		</tr>
+	</table>
+	{{/users.training.job}}
+	{{#users.training.study}}
+	<table>
+		<tr>
+			<td>{{from}} - {{until}}</td>
+			<td>{{company}}, {{place}}, {{graduation}}, {{subject}}</td>
+		</tr>
+	</table>
+	{{/users.training.study}}
+</div>

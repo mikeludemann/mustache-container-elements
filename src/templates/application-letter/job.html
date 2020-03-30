@@ -1,0 +1,14 @@
+<div id="description_of_job">
+  {{#job}}
+      Application: {{job}}
+      {{#placeToWork}}
+          in {{placeToWork}}
+      {{/placeToWork}}
+      {{#startDate}}
+          at {{startDate}}
+      {{/startDate}}
+  {{/job}}
+  {{^job}}
+      Application in your company
+  {{/job}}
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Application letter</title>
+	<script src="./../libs/mustache.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script>
+		$(document).ready(function () {
+			var data = {
+				users: {
+					person: {
+						firstName: "Test",
+						lastName: "Tester",
+						street: "Test Way 1a",
+						postalcode: "10111",
+						place: "Berlin",
+						mail: "test.tester@test.com"
+					}
+				},
+				job: "Frontend / Web Developer",
+				placeToWork: "Berlin",
+				startDate: "1st August 2018",
+				context: {
+					salutation: "Dear Sir or Madame,",
+					blocks: [
+						{ text: "I am Test" },
+						{ text: "Why to work in your company" }
+					]
+				},
+				greeting: "Your sincerely",
+				fullName: function(){
+					return this.users.person.firstName + " " + this.users.person.lastName;
+				},
+				fullDate: function () {
+					var date = new Date(),
+						day = date.getDate(),
+						month,
+						year = date.getFullYear();
+
+					if (date.getMonth() < 10) {
+
+						month = "0" + (date.getMonth() + 1);
+
+					} else {
+
+						month = date.getMonth() + 1;
+
+					}
+
+					return day + "." + month + "." + year;
+				}
+			};
+
+			$("#contact").load("contact.html", function () {
+				var contact = document.getElementById('contact').innerHTML;
+				var output = Mustache.render(contact, data);
+				$("#contact").html(output);
+			});
+
+			$("#date_of_create").load("date.html", function () {
+				var dateAct = document.getElementById('date_of_create').innerHTML;
+				var output = Mustache.render(dateAct, data);
+				$("#date_of_create").html(output);
+			});
+
+			$("#description_of_job").load("job.html", function () {
+				var jobDes = document.getElementById('description_of_job').innerHTML;
+				var output = Mustache.render(jobDes, data);
+				$("#description_of_job").html(output);
+			});
+
+			$("#description_of_application").load("text.html", function () {
+				var jobTxt = document.getElementById('description_of_application').innerHTML;
+				var output = Mustache.render(jobTxt, data);
+				$("#description_of_application").html(output);
+			});
+
+			$("#greeting").load("greeting.html", function () {
+				var greeter = document.getElementById('greeting').innerHTML;
+				var output = Mustache.render(greeter, data);
+				$("#greeting").html(output);
+			});
+
+			$("#fullName").load("fullName.html", function () {
+				var cName = document.getElementById('fullName').innerHTML;
+				var output = Mustache.render(cName, data);
+				$("#fullName").html(output);
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="contact"></div>
+	<div id="date_of_create"></div>
+	<div id="description_of_job"></div>
+	<div id="description_of_application"></div>
+	<div id="greeting"></div>
+	<div id="fullName"></div>
+</body>
+
+</html>

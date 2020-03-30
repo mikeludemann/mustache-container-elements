@@ -1,0 +1,13 @@
+<div id="school_data">
+	<div class="headline">
+		School data
+	</div>
+	{{#users.school.education}}
+	<table>
+		<tr>
+			<td>{{from}} - {{until}}</td>
+			<td>{{schools}}, {{place}}, {{graduation}}</td>
+		</tr>
+	</table>
+	{{/users.school.education}}
+</div>

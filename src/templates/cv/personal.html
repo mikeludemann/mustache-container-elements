@@ -1,0 +1,44 @@
+<div id="personal_data">
+	<div class="headline">
+		Personal Data
+	</div>
+	<table>
+		<tr>
+			<td>Name</td>
+			<td>{{fullName}}</td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td>{{users.person.street}}
+				<br/>{{users.person.postalcode}} {{users.person.place}}</td>
+		</tr>
+		<tr>
+			<td>Birthday</td>
+			<td>{{users.person.birthday}}</td>
+		</tr>
+		<tr>
+			<td>Place of birth</td>
+			<td>{{users.person.placeOfBirth}}</td>
+		</tr>
+		<tr>
+			<td>Nationality</td>
+			<td>{{users.person.nationality}}</td>
+		</tr>
+		<tr>
+			<td>Father</td>
+			<td>{{users.person.father.name}}, {{users.person.father.age}}, {{users.person.father.job}}</td>
+		</tr>
+		<tr>
+			<td>Mother</td>
+			<td>{{users.person.mother.name}}, {{users.person.mother.age}}, {{users.person.mother.job}}</td>
+		</tr>
+	</table>
+	{{#users.person.siblings}}
+	<table>
+		<tr>
+			<td>Siblings</td>
+			<td>{{name}}, {{age}}, {{job}}</td>
+		</tr>
+	</table>
+	{{/users.person.siblings}}
+</div>
